@@ -1,11 +1,10 @@
 package handler
 
 import (
+	"github.com/ShekleinAleksey/todo-app.git/pkg/service"
 	"github.com/gin-gonic/gin"
-	"github.com/zhashkevych/todo-app/pkg/service"
 
-	"github.com/swaggo/gin-swagger"
-	"github.com/swaggo/gin-swagger/swaggerFiles"
+	// "github.com/swaggo/gin-swagger/swaggerFiles"
 
 	_ "github.com/zhashkevych/todo-app/docs"
 )
@@ -21,7 +20,7 @@ func NewHandler(services *service.Service) *Handler {
 func (h *Handler) InitRoutes() *gin.Engine {
 	router := gin.New()
 
-	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	// router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	auth := router.Group("/auth")
 	{
@@ -29,7 +28,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		auth.POST("/sign-in", h.signIn)
 	}
 
-	api := router.Group("/api", h.userIdentity)
+	api := router.Group("/api")
 	{
 		lists := api.Group("/lists")
 		{
