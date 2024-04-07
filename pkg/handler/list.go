@@ -1,6 +1,8 @@
 package handler
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"github.com/zhashkevych/todo-app"
 )
@@ -19,7 +21,17 @@ import (
 // @Failure default {object} errorResponse
 // @Router /api/lists [post]
 func (h *Handler) createList(c *gin.Context) {
+	id, ok := c.Get(userCtx)
+	if !ok {
+		newErrorResponse(c, http.StatusInternalServerError, "user id not found")
+		return
+	}
 
+	var input todo.TodoList
+	if err := c.BindJSON(&input); err != nil {
+		newErrorResponse(c, http.StatusBadRequest, err.Error())
+		return
+	}
 }
 
 type getAllListsResponse struct {
