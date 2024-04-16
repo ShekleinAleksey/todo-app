@@ -3,8 +3,8 @@ package handler
 import (
 	"net/http"
 
+	"github.com/ShekleinAleksey/todo-app.git"
 	"github.com/gin-gonic/gin"
-	"github.com/zhashkevych/todo-app"
 )
 
 // @Summary SignUp

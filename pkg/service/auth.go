@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/ShekleinAleksey/todo-app.git"
+	"github.com/ShekleinAleksey/todo-app.git/pkg/repository"
 	"github.com/dgrijalva/jwt-go"
-	"github.com/zhashkevych/todo-app"
-	"github.com/zhashkevych/todo-app/pkg/repository"
 )
 
 const (
