@@ -15,8 +15,11 @@ import (
 )
 
 func main() {
-	logrus.SetFormatter(new(logrus.JSONFormatter))
+	logrus.SetFormatter(new(logrus.TextFormatter))
 
+	logger := logrus.New()
+	logger.SetOutput(os.Stdout)
+	logger.Println("This is a debug message")
 	if err := initConfig(); err != nil {
 		logrus.Fatalf("error initializing configs: %s", err.Error())
 	}

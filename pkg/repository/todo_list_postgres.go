@@ -4,10 +4,6 @@ import (
 	"fmt"
 	"strings"
 
-<<<<<<< HEAD
-=======
-	"github.com/ShekleinAleksey/todo-app"
->>>>>>> eb746f4d0d6cdd450ec40d3275c1647bace70f30
 	"github.com/ShekleinAleksey/todo-app.git"
 	"github.com/jmoiron/sqlx"
 	"github.com/sirupsen/logrus"
@@ -28,11 +24,7 @@ func (r *TodoListPostgres) Create(userId int, list todo.TodoList) (int, error) {
 	}
 
 	var id int
-<<<<<<< HEAD
 	createListQuery := fmt.Sprintf("INSERT INTO %s (title, description) VALUES ($1, $2) RETURNING id", todoListsTable)
-=======
-	createListQuery := fmt.Sprintf("INSERT INTO %s (user_id, list_id) VALUES ($1, $2) RETURNING id", todoListsTable)
->>>>>>> eb746f4d0d6cdd450ec40d3275c1647bace70f30
 	row := tx.QueryRow(createListQuery, list.Title, list.Description)
 	if err := row.Scan(&id); err != nil {
 		tx.Rollback()
@@ -57,10 +49,6 @@ func (r *TodoListPostgres) GetAll(userId int) ([]todo.TodoList, error) {
 	err := r.db.Select(&lists, query, userId)
 
 	return lists, err
-<<<<<<< HEAD
-=======
-
->>>>>>> eb746f4d0d6cdd450ec40d3275c1647bace70f30
 }
 
 func (r *TodoListPostgres) GetById(userId, listId int) (todo.TodoList, error) {
